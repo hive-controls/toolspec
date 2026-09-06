@@ -1,0 +1,56 @@
+{
+  "name": "@hive-controls/toolspec",
+  "version": "0.1.0",
+  "description": "The tool-manifest contract: JSON Schema, generated TypeScript types, and a conformance fixture for implementers and consumers.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hive-controls/toolspec.git"
+  },
+  "homepage": "https://github.com/hive-controls/toolspec#readme",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./schema": "./schema/toolspec.schema.json"
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist",
+    "src",
+    "schema",
+    "scripts",
+    "go",
+    "fixtures",
+    "tsconfig.build.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
+    "prepare": "npm run build",
+    "test": "node --import tsx --test \"src/**/*.test.mts\" \"probes/**/*.test.mts\" && node --import tsx scripts/test-go.mts",
+    "check": "node --import tsx scripts/check.mts && node --import tsx scripts/check-go.mts",
+    "codegen": "node --import tsx scripts/codegen.mts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "yaml": "^2.9.0",
+    "json-schema-to-typescript": "^15.0.4",
+    "eslint": "^10.9.1"
+  }
+}
