@@ -1,5 +1,9 @@
 # @hive-controls/toolspec
 
+> **Retired.** The tool manifest format now lives inside Formic as JSON Schemas:
+> https://github.com/hive-controls/formic (folder `schema/`). There is no replacement package;
+> nothing needs to import it. This repository is archived.
+
 The tool-manifest contract: a JSON Schema that a launcher-consumer and any number of
 tool-implementers agree on, so neither side has to depend on the other's package.
 
